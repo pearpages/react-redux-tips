@@ -24,7 +24,7 @@ const todos = (state = [], action) => {
   switch (action.type) {
     case "ADD_TODO":
       const lastId = getLastId(state);
-      action.id = (lastId + 1);
+      action.id = lastId + 1;
       return [...state, todo(undefined, action)];
     case "TOGGLE_TODO":
       return state.map(t => todo(t, action));
@@ -33,8 +33,20 @@ const todos = (state = [], action) => {
   }
 };
 
+export const add = text => ({
+  type: "ADD_TODO",
+  text
+});
+export const toggle = id => ({
+  type: "TOGGLE_TODO",
+  id
+});
+
 export default todos;
 
 function getLastId(todos = []) {
-  return todos.reduce((current, prev) => (current >= prev) ? current.id : prev.id, 0);
+  return todos.reduce(
+    (current, prev) => (current >= prev ? current.id : prev.id),
+    0
+  );
 }

@@ -1,7 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-function Filter({setFilter, isSelected, children, filter}) {
+import * as FilterActions from "../examples/src/visibility-filter";
+
+function Filter({ setFilter, isSelected, children, filter }) {
   return (
     <button
       onClick={() => setFilter(filter)}
@@ -10,15 +12,18 @@ function Filter({setFilter, isSelected, children, filter}) {
     >
       {children}
     </button>
-  )
+  );
 }
 
 const mapStateToProps = (state, props) => ({
-  isSelected: (state.visibilityFilter === props.filter)
+  isSelected: state.visibilityFilter === props.filter
 });
 
 const mapDispatchToProps = dispatch => ({
-  setFilter: filter => dispatch({ type: "SET_VISIBILITY_FILTER", filter })
+  setFilter: filter => dispatch(FilterActions.set(filter))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Filter);

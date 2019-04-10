@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as TODO from "../examples/src/todos";
 
 const AddTodo = ({ addTodo }) => {
   let input;
@@ -19,7 +20,10 @@ const AddTodo = ({ addTodo }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addTodo: value => dispatch({ type: "ADD_TODO", text: value})
+  addTodo: value => dispatch(TODO.add(value))
 });
 
-export default connect(null, mapDispatchToProps)(AddTodo);
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddTodo);

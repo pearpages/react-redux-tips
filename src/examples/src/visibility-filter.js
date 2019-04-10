@@ -7,4 +7,9 @@ const visibilityFilter = (state = "SHOW_ALL", action) => {
   }
 };
 
+export const set = filter => ({
+  type: "SET_VISIBILITY_FILTER",
+  filter
+});
+
 export default visibilityFilter;

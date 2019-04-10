@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Todo from "./Todo";
+import * as TODOS from "../examples/src/todos";
 
 const TodoItems = props => (
   <ul>
@@ -20,7 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onTodoClick: id => dispatch({ type: "TOGGLE_TODO", id })
+  onTodoClick: id => dispatch(TODOS.toggle(id))
 });
 
 export default connect(
