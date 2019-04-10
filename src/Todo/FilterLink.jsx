@@ -1,35 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-import Filter from './Filter';
+function Filter({setFilter, isSelected, children, filter}) {
+  return (
+    <button
+      onClick={() => setFilter(filter)}
+      disabled={isSelected}
+      style={{ backgroundColor: isSelected ? "#666" : "inherit" }}
+    >
+      {children}
+    </button>
+  )
+}
 
-class FilterLink extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {visibilityFilter: props.store.getState().visibilityFilter};
-  }
+const mapStateToProps = (state, props) => ({
+  isSelected: (state.visibilityFilter === props.filter)
+});
 
-  componentDidMount() {
-    this.storeSubscription = this.props.store.subscribe(() => this.setState({visibilityFilter: this.props.store.getState().visibilityFilter}));
-  }
+const mapDispatchToProps = dispatch => ({
+  setFilter: filter => dispatch({ type: "SET_VISIBILITY_FILTER", filter })
+});
 
-  componentWillUnmount() {
-    this.storeSubscription.unsubscribe();
-  }
-
-  handleClick= filter => this.props.store.dispatch({ type: "SET_VISIBILITY_FILTER", filter })
-  
-  isSelected = () => this.props.filter === this.state.visibilityFilter;
-
-  render () {
-    return (
-      <Filter
-        handleClick={() => this.handleClick(this.props.filter)}
-        isSelected={this.isSelected()}
-      >
-        {this.props.children}
-      </Filter>
-    );
-  }
-};
-
-export default FilterLink;
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

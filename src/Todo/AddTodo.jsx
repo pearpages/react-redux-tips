@@ -1,13 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const AddTodo = ({ handleClick }) => {
+const AddTodo = ({ addTodo }) => {
   let input;
   return (
     <>
       <input type="text" ref={node => (input = node)} />
       <button
         onClick={() => {
-          handleClick(input.value);
+          addTodo(input.value);
           input.value = "";
         }}
       >
@@ -17,4 +18,8 @@ const AddTodo = ({ handleClick }) => {
   );
 };
 
-export default AddTodo;
+const mapDispatchToProps = dispatch => ({
+  addTodo: value => dispatch({ type: "ADD_TODO", text: value})
+});
+
+export default connect(null, mapDispatchToProps)(AddTodo);

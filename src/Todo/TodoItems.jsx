@@ -1,13 +1,41 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-import Todo from './Todo';
+import Todo from "./Todo";
 
-const TodoItems = ({ todos, handleToggle }) => (
+const TodoItems = props => (
   <ul>
-    {todos.map(todo => (
-      <Todo handleClick={() => handleToggle(todo.id)} key={todo.id} {...todo} />
+    {props.todos.map(todo => (
+      <Todo
+        handleClick={() => props.onTodoClick(todo.id)}
+        key={todo.id}
+        {...todo}
+      />
     ))}
   </ul>
 );
 
-export default TodoItems;
+const mapStateToProps = state => ({
+  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+});
+
+const mapDispatchToProps = dispatch => ({
+  onTodoClick: id => dispatch({ type: "TOGGLE_TODO", id })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoItems);
+
+function getVisibleTodos(todos, filter) {
+  switch (filter) {
+    case "SHOW_ACTIVE":
+      return todos.filter(todo => todo.completed === false);
+    case "SHOW_COMPLETED":
+      return todos.filter(todo => todo.completed === true);
+    case "SHOW_ALL":
+    default:
+      return todos;
+  }
+}
