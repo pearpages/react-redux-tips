@@ -22,10 +22,8 @@ function Todos({ todos, visibilityFilter }) {
         handleToggle={toggleTodo}
       />
       <Footer
+        store={store}
         visibilityFilter={visibilityFilter}
-        handleClick={filter =>
-          store.dispatch({ type: "SET_VISIBILITY_FILTER", filter })
-        }
       />
     </>
   );
