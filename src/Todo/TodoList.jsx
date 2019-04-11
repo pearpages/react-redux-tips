@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 
 import AddTodo from "./AddTodo";
 import Footer from "./Footer";
@@ -6,12 +7,12 @@ import TodoItems from "./TodoItems";
 import MyLink from "../shared/Link";
 import FILTER from "../reducers/filter.models";
 
-export default function Todos({ saveList, filter }) {
+function Todos({ saveList, match }) {
   return (
     <>
-      {!filter ? <Footer saveList={saveList} /> : null}
+      {!match.params.filter ? <Footer saveList={saveList} /> : null}
       <AddTodo />
-      <TodoItems filter={filter} />
+      <TodoItems />
       <div>
         <MyLink filter={FILTER.SHOW_ALL}>ALL</MyLink> |{" "}
         <MyLink filter={FILTER.SHOW_ACTIVE}>ACTIVE</MyLink> |{" "}
@@ -20,3 +21,5 @@ export default function Todos({ saveList, filter }) {
     </>
   );
 }
+
+export default withRouter(Todos);

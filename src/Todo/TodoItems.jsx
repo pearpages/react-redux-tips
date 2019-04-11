@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 import Todo from "./Todo";
 import FILTER from "../reducers/filter.models";
@@ -26,7 +27,7 @@ const mapStateToProps = (state, ownProps) => ({
     state.todos,
     ownProps.filter || state.visibilityFilter
   ),
-  hasUrlFilter: !!ownProps.filter
+  hasUrlFilter: !!ownProps.match.params.filter
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -34,10 +35,12 @@ const mapDispatchToProps = dispatch => ({
   removeItem: id => dispatch(TODOS.removeItem(id))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoItems);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(TodoItems)
+);
 
 function getVisibleTodos(todos, filter) {
   switch (filter) {
