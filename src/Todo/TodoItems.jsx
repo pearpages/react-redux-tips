@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Todo from "./Todo";
-import * as TODOS from "../examples/src/todos";
+import * as TODOS from "../reducers/todos";
 
 const TodoItems = props => (
   <ul>

@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import logo from "./logo.svg";
 import "./App.css";
 import TodoList from "./Todo/TodoList";
-import todos from "./examples/src/todos";
-import visibilityFilter from "./examples/src/visibility-filter";
+import todos from "./reducers/todos";
+import visibilityFilter from "./reducers/visibility-filter";
 const store = createStore(combineReducers({ todos, visibilityFilter }));
 
 class App extends Component {

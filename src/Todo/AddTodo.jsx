@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as TODO from "../examples/src/todos";
+import * as TODO from "../reducers/todos";
 
 const AddTodo = ({ addTodo }) => {
   let input;

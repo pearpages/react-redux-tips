@@ -10,6 +10,6 @@ const counter = (state = 0, action) => {
 };
 
 export const increment = () => ({ type: "INCREMENT" });
-export const drecrement = () => ({ type: "DECREMENT" });
+export const decrement = () => ({ type: "DECREMENT" });
 
 export default counter;

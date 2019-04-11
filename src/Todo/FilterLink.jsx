@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import * as FilterActions from "../examples/src/visibility-filter";
+import * as FilterActions from "../reducers/visibility-filter";
 
 function Filter({ setFilter, isSelected, children, filter }) {
   return (
