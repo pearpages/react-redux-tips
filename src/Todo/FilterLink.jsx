@@ -8,7 +8,7 @@ function Filter({ setFilter, isSelected, children, filter }) {
     <button
       onClick={() => setFilter(filter)}
       disabled={isSelected}
-      style={{ backgroundColor: isSelected ? "#666" : "inherit" }}
+      style={isSelected ? { backgroundColor: "#666", color: "white" } : null}
     >
       {children}
     </button>

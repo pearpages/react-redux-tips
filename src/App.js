@@ -7,24 +7,25 @@ import TodoList from "./Todo/TodoList";
 import todos from "./reducers/todos";
 import visibilityFilter from "./reducers/visibility-filter";
 import persistedStore from "./store/persisted-store";
-import { loadState } from "./store/local-store-data";
+import { loadState, saveState } from "./store/local-store-data";
 const store = createStore(
   combineReducers({ todos, visibilityFilter }),
   loadState() || persistedStore
 );
 
-console.log(store.getState());
-
 class App extends Component {
+  saveList = () => {
+    saveState(store.getState());
+    alert("Saved!");
+  };
+
   render() {
     return (
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <TodoList />
+            <h4>The famous todo-list!</h4>
+            <TodoList saveList={this.saveList} />
           </header>
         </div>
       </Provider>

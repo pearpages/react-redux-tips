@@ -28,6 +28,8 @@ const todos = (state = [], action) => {
       return [...state, todo(undefined, action)];
     case "TOGGLE_TODO":
       return state.map(t => todo(t, action));
+    case "REMOVE_ITEM":
+      return state.filter(item => item.id !== action.id);
     default:
       return state;
   }
@@ -39,6 +41,10 @@ export const add = text => ({
 });
 export const toggle = id => ({
   type: "TOGGLE_TODO",
+  id
+});
+export const removeItem = id => ({
+  type: "REMOVE_ITEM",
   id
 });
 

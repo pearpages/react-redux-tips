@@ -10,6 +10,7 @@ const TodoItems = props => (
     {props.todos.map(todo => (
       <Todo
         handleClick={() => props.onTodoClick(todo.id)}
+        removeItem={() => props.removeItem(todo.id)}
         key={todo.id}
         {...todo}
       />
@@ -22,7 +23,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onTodoClick: id => dispatch(TODOS.toggle(id))
+  onTodoClick: id => dispatch(TODOS.toggle(id)),
+  removeItem: id => dispatch(TODOS.removeItem(id))
 });
 
 export default connect(
