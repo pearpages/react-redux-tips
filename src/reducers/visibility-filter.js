@@ -1,4 +1,6 @@
-const visibilityFilter = (state = "SHOW_ALL", action) => {
+import FILTER from "./filter.models";
+
+const visibilityFilter = (state = FILTER.SHOW_ALL, action) => {
   switch (action.type) {
     case "SET_VISIBILITY_FILTER":
       return action.filter;

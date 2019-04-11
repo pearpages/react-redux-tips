@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Todo from "./Todo";
+import FILTER from "../reducers/filter.models";
 import * as TODOS from "../reducers/todos";
 
 const TodoItems = props => (
@@ -31,11 +32,11 @@ export default connect(
 
 function getVisibleTodos(todos, filter) {
   switch (filter) {
-    case "SHOW_ACTIVE":
+    case FILTER.SHOW_ACTIVE:
       return todos.filter(todo => todo.completed === false);
-    case "SHOW_COMPLETED":
+    case FILTER.SHOW_COMPLETED:
       return todos.filter(todo => todo.completed === true);
-    case "SHOW_ALL":
+    case FILTER.SHOW_ALL:
     default:
       return todos;
   }

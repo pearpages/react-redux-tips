@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import FILTER from "../reducers/filter.models";
 
 const todo = (state, action) => {
   switch (action.type) {
@@ -33,7 +34,7 @@ const todos = (state = [], action) => {
   }
 };
 
-const visibilityFilter = (state = "SHOW_ALL", action) => {
+const visibilityFilter = (state = FILTER.SHOW_ALL, action) => {
   switch (action.type) {
     case "SET_VISIBILITY_FILTER":
       return action.filter;
@@ -53,7 +54,10 @@ const todoApp = (state = {}, action) => {
 const store = createStore(todoApp);
 
 it("Initial state:", () => {
-  expect(store.getState()).toEqual({ todos: [], visibilityFilter: "SHOW_ALL" });
+  expect(store.getState()).toEqual({
+    todos: [],
+    visibilityFilter: FILTER.SHOW_ALL
+  });
 });
 
 it("should add a todo", () => {
@@ -76,20 +80,20 @@ it("should add a todo", () => {
       { completed: true, id: 0, text: "Learn Redux" },
       { completed: false, id: 1, text: "Go shopping" }
     ],
-    visibilityFilter: "SHOW_ALL"
+    visibilityFilter: FILTER.SHOW_ALL
   });
 });
 
 it("should set the visibility filter", () => {
   store.dispatch({
     type: "SET_VISIBILITY_FILTER",
-    filter: "SHOW_COMPLETED"
+    filter: FILTER.SHOW_COMPLETED
   });
   expect(store.getState()).toEqual({
     todos: [
       { completed: true, id: 0, text: "Learn Redux" },
       { completed: false, id: 1, text: "Go shopping" }
     ],
-    visibilityFilter: "SHOW_COMPLETED"
+    visibilityFilter: FILTER.SHOW_COMPLETED
   });
 });

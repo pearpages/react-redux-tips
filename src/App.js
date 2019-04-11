@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-import logo from "./logo.svg";
 import "./App.css";
 import TodoList from "./Todo/TodoList";
 import todos from "./reducers/todos";
 import visibilityFilter from "./reducers/visibility-filter";
-const store = createStore(combineReducers({ todos, visibilityFilter }));
+import persistedStore from "./store/persisted-store";
+import { loadState } from "./store/local-store-data";
+const store = createStore(
+  combineReducers({ todos, visibilityFilter }),
+  loadState() || persistedStore
+);
+
+console.log(store.getState());
 
 class App extends Component {
   render() {
@@ -15,7 +21,6 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
