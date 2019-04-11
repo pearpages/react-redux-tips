@@ -25,6 +25,7 @@ const todos = (state = [], action) => {
     case "ADD_TODO":
       const lastId = getLastId(state);
       action.id = lastId + 1;
+      // we couuld use .e.g. import { v4 } from 'node-uuid';
       return [...state, todo(undefined, action)];
     case "TOGGLE_TODO":
       return state.map(t => todo(t, action));

@@ -6,20 +6,27 @@ import FILTER from "../reducers/filter.models";
 import * as TODOS from "../reducers/todos";
 
 const TodoItems = props => (
-  <ul>
-    {props.todos.map(todo => (
-      <Todo
-        handleClick={() => props.onTodoClick(todo.id)}
-        removeItem={() => props.removeItem(todo.id)}
-        key={todo.id}
-        {...todo}
-      />
-    ))}
-  </ul>
+  <>
+    {props.hasUrlFilter ? <div>Is using URL filter</div> : null}
+    <ul>
+      {props.todos.map(todo => (
+        <Todo
+          handleClick={() => props.onTodoClick(todo.id)}
+          removeItem={() => props.removeItem(todo.id)}
+          key={todo.id}
+          {...todo}
+        />
+      ))}
+    </ul>
+  </>
 );
 
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+const mapStateToProps = (state, ownProps) => ({
+  todos: getVisibleTodos(
+    state.todos,
+    ownProps.filter || state.visibilityFilter
+  ),
+  hasUrlFilter: !!ownProps.filter
 });
 
 const mapDispatchToProps = dispatch => ({

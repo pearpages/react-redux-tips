@@ -5,9 +5,10 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "redux": "^4.0.1",
     "react-redux": "^7.0.1",
-    "react-scripts": "2.1.8"
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,5 +25,4 @@
     "not ie <= 11",
     "not op_mini all"
   ]
-    
 }
