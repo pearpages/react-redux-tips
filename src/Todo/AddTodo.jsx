@@ -19,11 +19,16 @@ const AddTodo = ({ addTodo }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  addTodo: value => dispatch(TODO.add(value))
-});
+// long version:
+
+// const mapDispatchToProps = dispatch => ({
+//   addTodo: value => dispatch(TODO.add(value))
+// });
 
 export default connect(
   null,
-  mapDispatchToProps
+  // short version:
+  {
+    addTodo: value => TODO.add(value)
+  }
 )(AddTodo);

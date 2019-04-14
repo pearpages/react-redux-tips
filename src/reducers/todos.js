@@ -1,3 +1,5 @@
+import FILTER from "../reducers/filter.models";
+
 const todo = (state = {}, action) => {
   switch (action.type) {
     case "ADD_TODO":
@@ -56,4 +58,16 @@ function getLastId(todos = []) {
     (current, prev) => (current >= prev ? current.id : prev.id),
     0
   );
+}
+
+export function getVisibleTodos(state, filter) {
+  switch (filter) {
+    case FILTER.SHOW_ACTIVE:
+      return state.filter(todo => todo.completed === false);
+    case FILTER.SHOW_COMPLETED:
+      return state.filter(todo => todo.completed === true);
+    case FILTER.SHOW_ALL:
+    default:
+      return state;
+  }
 }

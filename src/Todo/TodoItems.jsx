@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import Todo from "./Todo";
-import FILTER from "../reducers/filter.models";
 import * as TODOS from "../reducers/todos";
+import { getVisibleTodos } from "../store/store";
 
 const TodoItems = props => (
   <>
@@ -23,10 +23,7 @@ const TodoItems = props => (
 );
 
 const mapStateToProps = (state, ownProps) => ({
-  todos: getVisibleTodos(
-    state.todos,
-    ownProps.filter || state.visibilityFilter
-  ),
+  todos: getVisibleTodos(state, ownProps.filter || state.visibilityFilter),
   hasUrlFilter: !!ownProps.match.params.filter
 });
 
@@ -41,15 +38,3 @@ export default withRouter(
     mapDispatchToProps
   )(TodoItems)
 );
-
-function getVisibleTodos(todos, filter) {
-  switch (filter) {
-    case FILTER.SHOW_ACTIVE:
-      return todos.filter(todo => todo.completed === false);
-    case FILTER.SHOW_COMPLETED:
-      return todos.filter(todo => todo.completed === true);
-    case FILTER.SHOW_ALL:
-    default:
-      return todos;
-  }
-}
