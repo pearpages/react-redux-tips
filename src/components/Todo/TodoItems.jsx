@@ -22,6 +22,7 @@ const TodoItems = props => (
   </>
 );
 
+// how to use own props
 const mapStateToProps = (state, ownProps) => ({
   todos: getVisibleTodos(state, ownProps.filter || state.visibilityFilter),
   hasUrlFilter: !!ownProps.match.params.filter
