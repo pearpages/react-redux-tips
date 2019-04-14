@@ -12,7 +12,7 @@ function TodoList({ saveList, match }) {
     <>
       {!match.params.filter ? <Footer saveList={saveList} /> : null}
       <AddTodo />
-      <TodoItems />
+      <TodoItems filter={match.params.filter ? match.params.filter : null} />
       <div>
         <MyLink filter={FILTER.SHOW_ALL}>ALL</MyLink> |{" "}
         <MyLink filter={FILTER.SHOW_ACTIVE}>ACTIVE</MyLink> |{" "}
