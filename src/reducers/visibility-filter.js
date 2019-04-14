@@ -2,7 +2,7 @@ import FILTER from "./filter.models";
 
 const visibilityFilter = (state = FILTER.SHOW_ALL, action) => {
   switch (action.type) {
-    case "SET_VISIBILITY_FILTER":
+    case "[FILTER] Set filter":
       return action.filter;
     default:
       return state;
@@ -10,7 +10,7 @@ const visibilityFilter = (state = FILTER.SHOW_ALL, action) => {
 };
 
 export const set = filter => ({
-  type: "SET_VISIBILITY_FILTER",
+  type: "[FILTER] Set filter",
   filter
 });
 
