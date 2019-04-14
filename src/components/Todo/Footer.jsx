@@ -1,7 +1,7 @@
 import React from "react";
 
 import FilterLink from "./FilterLink";
-import FILTER from "../reducers/filter.models";
+import FILTER from "../../reducers/filter.models";
 
 const Footer = ({ saveList }) => (
   <div>

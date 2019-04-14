@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import Todo from "./Todo";
-import * as TODOS from "../reducers/todos";
-import { getVisibleTodos } from "../store/store";
+import * as TODOS from "../../reducers/todos";
+import { getVisibleTodos } from "../../reducers";
 
 const TodoItems = props => (
   <>

@@ -4,8 +4,8 @@ import { withRouter } from "react-router";
 import AddTodo from "./AddTodo";
 import Footer from "./Footer";
 import TodoItems from "./TodoItems";
-import MyLink from "../shared/Link";
-import FILTER from "../reducers/filter.models";
+import MyLink from "./Link";
+import FILTER from "../../reducers/filter.models";
 
 function Todos({ saveList, match }) {
   return (

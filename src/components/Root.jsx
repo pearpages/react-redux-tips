@@ -3,8 +3,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import App from "./App";
-import store from "./store/store";
-import { saveState } from "./store/local-store-data";
+import store from "../reducers";
+import { saveState } from "../storage/local-store-data";
 
 export default function Root() {
   const saveList = () => {

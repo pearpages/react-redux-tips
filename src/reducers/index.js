@@ -2,8 +2,8 @@ import { createStore, combineReducers } from "redux";
 
 import todos, * as fromTodos from "../reducers/todos";
 import visibilityFilter from "../reducers/visibility-filter";
-import persistedStore from "./persisted-store";
-import { loadState } from "./local-store-data";
+import persistedStore from "../storage/persisted-store";
+import { loadState } from "../storage/local-store-data";
 
 export default createStore(
   combineReducers({ todos, visibilityFilter }),
