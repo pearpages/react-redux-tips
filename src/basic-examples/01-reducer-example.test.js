@@ -1,5 +1,5 @@
-import counter from "../reducers/counter";
-import * as ACTIONS from "../reducers/counter";
+import counter from "./reducers/counter";
+import * as ACTIONS from "./reducers/counter";
 
 it("Should run all these tests", () => {
   expect(counter(0, ACTIONS.increment())).toEqual(1);

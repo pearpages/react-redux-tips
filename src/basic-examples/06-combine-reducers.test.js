@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from "redux";
-import FILTER from "../reducers/filter.models";
+import FILTER from "./reducers/filter.models";
 
 const todo = (state, action) => {
   switch (action.type) {
