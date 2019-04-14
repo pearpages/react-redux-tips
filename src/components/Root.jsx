@@ -15,7 +15,10 @@ export default function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Route path="/:filter?" component={App} saveList={saveList} />
+        <Route
+          path="/:filter?"
+          render={props => <App saveList={saveList} {...props} />}
+        />
       </BrowserRouter>
     </Provider>
   );

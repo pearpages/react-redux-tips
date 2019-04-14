@@ -7,7 +7,7 @@ import TodoItems from "./TodoItems";
 import MyLink from "./Link";
 import FILTER from "../../reducers/filter.models";
 
-function Todos({ saveList, match }) {
+function TodoList({ saveList, match }) {
   return (
     <>
       {!match.params.filter ? <Footer saveList={saveList} /> : null}
@@ -22,4 +22,4 @@ function Todos({ saveList, match }) {
   );
 }
 
-export default withRouter(Todos);
+export default withRouter(TodoList);

@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+import { v4 } from "node-uuid";
 import FILTER from "../reducers/filter.models";
 
 const todo = (state = {}, action) => {
@@ -22,17 +24,26 @@ const todo = (state = {}, action) => {
   }
 };
 
-const todos = (state = [], action) => {
+const byId = (state = {}, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      const lastId = getLastId(state);
-      action.id = lastId + 1;
-      // we couuld use .e.g. import { v4 } from 'node-uuid';
-      return [...state, todo(undefined, action)];
     case "TOGGLE_TODO":
-      return state.map(t => todo(t, action));
-    case "REMOVE_ITEM":
-      return state.filter(item => item.id !== action.id);
+      return { ...state, [action.id]: todo(state[action.id], action) };
+    case "REMOVE_TODO":
+      const shallowState = { ...state };
+      delete shallowState[action.id];
+      return shallowState;
+    default:
+      return state;
+  }
+};
+
+const allIds = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_TODO":
+      return [...state, action.id];
+    case "REMOVE_TODO":
+      return state.filter(id => id !== action.id);
     default:
       return state;
   }
@@ -40,34 +51,34 @@ const todos = (state = [], action) => {
 
 export const add = text => ({
   type: "ADD_TODO",
-  text
+  text,
+  id: v4()
 });
 export const toggle = id => ({
   type: "TOGGLE_TODO",
   id
 });
 export const removeItem = id => ({
-  type: "REMOVE_ITEM",
+  type: "REMOVE_TODO",
   id
 });
 
-export default todos;
+export default combineReducers({
+  byId,
+  allIds
+});
 
-function getLastId(todos = []) {
-  return todos.reduce(
-    (current, prev) => (current >= prev ? current.id : prev.id),
-    0
-  );
-}
+const getAllTodos = state => state.allIds.map(id => state.byId[id]);
 
 export function getVisibleTodos(state, filter) {
+  const allTodos = getAllTodos(state);
   switch (filter) {
     case FILTER.SHOW_ACTIVE:
-      return state.filter(todo => todo.completed === false);
+      return allTodos.filter(todo => todo.completed === false);
     case FILTER.SHOW_COMPLETED:
-      return state.filter(todo => todo.completed === true);
+      return allTodos.filter(todo => todo.completed === true);
     case FILTER.SHOW_ALL:
     default:
-      return state;
+      return allTodos;
   }
 }

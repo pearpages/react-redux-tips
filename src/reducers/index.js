@@ -7,7 +7,8 @@ import { loadState } from "../storage/local-store-data";
 
 export default createStore(
   combineReducers({ todos, visibilityFilter }),
-  loadState() || persistedStore
+  loadState() || persistedStore,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 // selectors:

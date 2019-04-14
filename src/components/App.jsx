@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 
 import "./App.css";
 import TodoList from "./Todo/TodoList";
@@ -18,4 +19,4 @@ function App({ match, saveList }) {
   );
 }
 
-export default App;
+export default withRouter(App);

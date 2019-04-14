@@ -10,7 +10,7 @@ const Footer = ({ saveList }) => (
       <FilterLink filter={FILTER.SHOW_ACTIVE}>Active</FilterLink>
       <FilterLink filter={FILTER.SHOW_COMPLETED}>Completed</FilterLink>
     </div>
-    <button onClick={saveList}>Save List</button>
+    <button onClick={() => saveList()}>Save List</button>
   </div>
 );
 
