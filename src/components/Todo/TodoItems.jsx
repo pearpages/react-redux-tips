@@ -27,10 +27,16 @@ const mapStateToProps = (state, ownProps) => ({
   hasUrlFilter: !!ownProps.match.params.filter
 });
 
-const mapDispatchToProps = dispatch => ({
-  onTodoClick: id => dispatch(TODOS.toggle(id)),
-  removeItem: id => dispatch(TODOS.removeItem(id))
-});
+// long version:
+// const mapDispatchToProps = dispatch => ({
+//   onTodoClick: id => dispatch(TODOS.toggle(id)),
+//   removeItem: id => dispatch(TODOS.removeItem(id))
+// });
+// short version:
+const mapDispatchToProps = {
+  onTodoClick: id => TODOS.toggle(id),
+  removeItem: id => TODOS.removeItem(id)
+};
 
 export default withRouter(
   connect(

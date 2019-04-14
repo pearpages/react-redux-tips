@@ -19,9 +19,10 @@ const mapStateToProps = (state, props) => ({
   isSelected: state.visibilityFilter === props.filter
 });
 
-const mapDispatchToProps = dispatch => ({
-  setFilter: filter => dispatch(FilterActions.set(filter))
-});
+// short version without dispatch
+const mapDispatchToProps = {
+  setFilter: filter => FilterActions.set(filter)
+};
 
 export default connect(
   mapStateToProps,
