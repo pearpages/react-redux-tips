@@ -6,7 +6,7 @@ import Todo from "./Todo";
 import * as TODOS from "../../reducers/todos";
 import { getVisibleTodos } from "../../reducers";
 
-const TodoItems = props => (
+const VisibleTodoList = props => (
   <>
     {props.hasUrlFilter ? <div>Is using URL filter</div> : null}
     <ul>
@@ -43,5 +43,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(TodoItems)
+  )(VisibleTodoList)
 );

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import AddTodo from "./AddTodo";
 import Footer from "./Footer";
-import TodoItems from "./TodoItems";
+import VisibleTodoList from "./VisibleTodoList";
 import MyLink from "./MyLink";
 import * as FilterActions from "../../reducers/visibility-filter";
 import FILTER from "../../reducers/filter.models";
@@ -18,7 +18,7 @@ function TodoList({ saveList, match, onSetFilter, filter }) {
     <>
       {!match.params.filter ? <Footer saveList={saveList} /> : null}
       <AddTodo />
-      <TodoItems />
+      <VisibleTodoList />
       <div>
         <MyLink
           handleOnClick={() => onSetFilter(FILTER.SHOW_ALL)}
