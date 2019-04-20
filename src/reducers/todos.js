@@ -14,7 +14,7 @@ const byId = (state = {}, action) => {
       delete shallowState[action.id];
       return shallowState;
     case ACTION_TYPES.RECEIVE_TODOS:
-      console.log(action);
+      // console.log(action);
       return state;
     default:
       return state;
@@ -28,7 +28,7 @@ const allIds = (state = [], action) => {
     case ACTION_TYPES.REMOVE_TODO:
       return state.filter(id => id !== action.id);
     case ACTION_TYPES.RECEIVE_TODOS:
-      console.log(action);
+      // console.log(action);
       return state;
     default:
       return state;

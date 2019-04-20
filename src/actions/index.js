@@ -1,5 +1,7 @@
 import { v4 } from "node-uuid";
 
+import * as api from "../api";
+
 import ACTION_TYPES from "./types";
 
 export const receiveTodos = (filter, response) => ({
@@ -7,6 +9,9 @@ export const receiveTodos = (filter, response) => ({
   filter,
   response
 });
+
+export const fetch = filter =>
+  api.fetchTodos(filter).then(response => receiveTodos(filter, response));
 
 export const add = text => ({
   type: ACTION_TYPES.ADD_TODO,

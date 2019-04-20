@@ -5,13 +5,11 @@ import { withRouter } from "react-router";
 import Todo from "./Todo";
 import * as Actions from "../../actions";
 import { getVisibleTodos, getFilter } from "../../reducers";
-import * as api from "../../api";
 
 const VisibleTodoList = props => {
   const fetchData = () => {
-    api
-      .fetchTodos(props.filter)
-      .then(todos => props.receiveTodos(props.filter, todos));
+    const { filter, fetch } = props;
+    fetch(filter);
   };
 
   // updated
