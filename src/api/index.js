@@ -1,5 +1,7 @@
 import { v4 } from "node-uuid";
 
+import FILTER from "../reducers/filter.models";
+
 // This is a fake in-memory implementation of something
 // that would be implemented by calling a REST server.
 
@@ -28,11 +30,11 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 export const fetchTodos = filter =>
   delay(500).then(() => {
     switch (filter) {
-      case "all":
+      case FILTER.SHOW_ALL:
         return fakeDatabase.todos;
-      case "active":
+      case FILTER.SHOW_ACTIVE:
         return fakeDatabase.todos.filter(t => !t.completed);
-      case "completed":
+      case FILTER.SHOW_COMPLETED:
         return fakeDatabase.todos.filter(t => t.completed);
       default:
         throw new Error(`Unknown filter: ${filter}`);

@@ -1,15 +1,8 @@
 import { combineReducers } from "redux";
-import { v4 } from "node-uuid";
+import ACTION_TYPES from "../actions/types";
 
 import todo from "./todo";
 import FILTER from "../reducers/filter.models";
-
-export const ACTION_TYPES = {
-  ADD_TODO: "[TODOS] Add Todo",
-  TOGGLE_TODO: "[TODOS] Toggle Todo",
-  REMOVE_TODO: "[TODOS] Remove Todo"
-};
-Object.freeze(ACTION_TYPES);
 
 const byId = (state = {}, action) => {
   switch (action.type) {
@@ -20,6 +13,9 @@ const byId = (state = {}, action) => {
       const shallowState = { ...state };
       delete shallowState[action.id];
       return shallowState;
+    case ACTION_TYPES.RECEIVE_TODOS:
+      console.log(action);
+      return state;
     default:
       return state;
   }
@@ -31,24 +27,13 @@ const allIds = (state = [], action) => {
       return [...state, action.id];
     case ACTION_TYPES.REMOVE_TODO:
       return state.filter(id => id !== action.id);
+    case ACTION_TYPES.RECEIVE_TODOS:
+      console.log(action);
+      return state;
     default:
       return state;
   }
 };
-
-export const add = text => ({
-  type: ACTION_TYPES.ADD_TODO,
-  text,
-  id: v4()
-});
-export const toggle = id => ({
-  type: ACTION_TYPES.TOGGLE_TODO,
-  id
-});
-export const removeItem = id => ({
-  type: ACTION_TYPES.REMOVE_TODO,
-  id
-});
 
 export default combineReducers({
   byId,
