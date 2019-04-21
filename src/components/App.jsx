@@ -11,8 +11,8 @@ function App({ match, saveList }) {
         match
       )}
       <header className="App-header">
-        <h4>The famous todo-list!</h4>
-        <TodoList saveList={saveList} />
+        <TodoList title="Local" saveList={saveList} />
+        <TodoList title="Remote" saveList={saveList} />
       </header>
     </div>
   );

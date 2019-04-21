@@ -2,7 +2,8 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import promise from "redux-promise";
 import { createLogger } from "redux-logger";
 
-import localTodos, * as fromTodos from "./local/todos";
+import localTodos, * as fromTodos from "./local";
+import remoteTodos from "./remote";
 import visibilityFilter from "../reducers/visibility-filter";
 import persistedStore from "../storage/persisted-store";
 import { loadState } from "../storage/local-store-data";
@@ -19,7 +20,7 @@ const configureStore = () => {
   middlewares.push(promise);
 
   const store = createStore(
-    combineReducers({ localTodos, visibilityFilter }),
+    combineReducers({ localTodos, remoteTodos, visibilityFilter }),
     loadState() || persistedStore,
     composeEnhancers(applyMiddleware(...middlewares))
   );

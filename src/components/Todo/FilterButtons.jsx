@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import FilterLink from "./FilterLink";
 import FILTER from "../../reducers/filter.models";
 
-const Footer = ({ saveList, history }) => {
+const FilterButtons = ({ saveList, history }) => {
   const redirect = filter => history.push(filter);
 
   return (
@@ -34,4 +34,4 @@ const Footer = ({ saveList, history }) => {
   );
 };
 
-export default withRouter(Footer);
+export default withRouter(FilterButtons);
