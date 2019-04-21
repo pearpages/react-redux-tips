@@ -37,7 +37,7 @@ const configureStore = () => {
 export default configureStore;
 
 // selectors:
-export const getVisibleTodos = state =>
-  fromTodos.getVisibleTodos(state.todos, state.visibilityFilter);
+export const getLocalTodos = state =>
+  fromTodos.getLocalTodos(state.todos, state.visibilityFilter);
 
 export const getFilter = state => state.visibilityFilter;

@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 import Todo from "./Todo";
 import * as Actions from "../../actions";
-import { getVisibleTodos, getFilter } from "../../reducers";
+import { getLocalTodos, getFilter } from "../../reducers";
 
 const VisibleTodoList = props => {
   const fetchData = () => {
@@ -39,7 +39,7 @@ const VisibleTodoList = props => {
 // how to use own props
 const mapStateToProps = (state, ownProps) => ({
   filter: getFilter(state),
-  todos: getVisibleTodos(state),
+  todos: getLocalTodos(state),
   hasUrlFilter: !!ownProps.match.params.filter
 });
 
