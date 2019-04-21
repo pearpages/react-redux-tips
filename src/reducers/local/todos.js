@@ -1,15 +1,14 @@
 import { combineReducers } from "redux";
 
-import ACTION_TYPES from "../actions/types";
-import todo from "./todo";
-import FILTER from "../reducers/filter.models";
-import idsByFilter from "./idsByFilter";
+import ACTION_TYPES from "../../actions/types";
+import todoReducer from "./todo";
+import FILTER from "../filter.models";
 
 const byId = (state = {}, action) => {
   switch (action.type) {
     case ACTION_TYPES.ADD_TODO:
     case ACTION_TYPES.TOGGLE_TODO:
-      return { ...state, [action.id]: todo(state[action.id], action) };
+      return { ...state, [action.id]: todoReducer(state[action.id], action) };
     case ACTION_TYPES.REMOVE_TODO:
       const shallowState = { ...state };
       delete shallowState[action.id];
@@ -41,8 +40,7 @@ const allIds = (state = [], action) => {
 
 export default combineReducers({
   byId,
-  allIds, // local ids
-  idsByFilter
+  allIds
 });
 
 const getAllTodos = state => state.allIds.map(id => state.byId[id]);

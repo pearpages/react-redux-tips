@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import ACTION_TYPES from "./filter.models";
+import ACTION_TYPES from "../filter.models";
 
 const allIds = (state = [], action) => {
   if (action.filter !== ACTION_TYPES.SHOW_ALL) {

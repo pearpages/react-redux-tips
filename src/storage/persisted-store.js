@@ -1,7 +1,7 @@
 import FILTER from "../reducers/filter.models";
 
 export default {
-  todos: {
+  localTodos: {
     allIds: [0, 1, 2],
     byId: {
       0: {
@@ -21,5 +21,6 @@ export default {
       }
     }
   },
+  remoteTodos: {},
   visibilityFilter: FILTER.SHOW_ALL
 };
