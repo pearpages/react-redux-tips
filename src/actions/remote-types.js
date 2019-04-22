@@ -1,4 +1,5 @@
 export default {
   FETCH_TODOS: "[REMOTE TODOS] Fetch todos",
-  RECEIVE_TODOS: "[REMOTE TODOS] Receive todos"
+  FETCH_TODOS_SUCCESS: "[REMOTE TODOS] Fetch success",
+  FETCH_TODOS_FAILURE: "[REMOTE TODOS] Fetch failure"
 };

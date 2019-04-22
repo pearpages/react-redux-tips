@@ -28,16 +28,13 @@ export default function TodoList({
       <h4>{title}</h4>
       <FilterButtons saveList={saveList} />
       <AddTodo />
-      {isLoading ? (
-        <div>loading...</div>
-      ) : (
-        <VisibleTodoList
-          hasUrlFilter={hasUrlFilter}
-          todos={todos}
-          toggle={toggle}
-          removeItem={removeItem}
-        />
-      )}
+      <VisibleTodoList
+        hasUrlFilter={hasUrlFilter}
+        todos={todos}
+        toggle={toggle}
+        isLoading={isLoading}
+        removeItem={removeItem}
+      />
 
       <div>
         <MyLink
