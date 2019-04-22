@@ -37,6 +37,7 @@ export default filter => {
     }
     switch (action.type) {
       case REMOTE_TYPES.FETCH_TODOS_SUCCESS:
+      case REMOTE_TYPES.FETCH_TODOS:
         return null;
       case REMOTE_TYPES.FETCH_TODOS_FAILURE:
         return action.error;
@@ -55,3 +56,5 @@ export default filter => {
 export const getIds = state => state.ids;
 
 export const getIsFetching = state => state.isFetching;
+
+export const getError = state => state.error;

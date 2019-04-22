@@ -9,16 +9,18 @@ const VisibleTodoList = ({
   toggle,
   removeItem,
   isLoading,
-  error
+  error,
+  retry
 }) => {
   if (!!error) {
-    return <FetchError message={error} onRetry={() => alert("retry!")} />;
+    return <FetchError message={error} onRetry={retry} />;
   } else if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
     <>
       {hasUrlFilter ? <div>Is using URL filter</div> : null}
+      <button onClick={() => retry()}>Refresh</button>
       <ul>
         {todos.map(todo => (
           <Todo

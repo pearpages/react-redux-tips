@@ -15,3 +15,6 @@ export const getRemoteTodos = (state, filter) => {
 
 export const isFetching = (state, filter) =>
   fromList.isFetching(state.listByFilter, filter);
+
+export const getError = (state, filter) =>
+  fromList.getError(state.listByFilter, filter);

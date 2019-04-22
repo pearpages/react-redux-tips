@@ -14,3 +14,5 @@ export const getIds = (state, filter) => fromList.getIds(state[filter]);
 
 export const isFetching = (state, filter) =>
   fromList.getIsFetching(state[filter]);
+
+export const getError = (state, filter) => fromList.getError(state[filter]);

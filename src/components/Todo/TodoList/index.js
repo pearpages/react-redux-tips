@@ -17,7 +17,9 @@ export default function TodoList({
   todos,
   toggle,
   removeItem,
-  isLoading
+  isLoading,
+  error = null,
+  retry
 }) {
   if (filter !== (match.params.filter || FILTER.ALL)) {
     onSetFilter(match.params.filter || FILTER.ALL);
@@ -34,6 +36,8 @@ export default function TodoList({
         toggle={toggle}
         isLoading={isLoading}
         removeItem={removeItem}
+        error={error}
+        retry={retry}
       />
 
       <div>

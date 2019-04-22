@@ -19,7 +19,8 @@ function App({
   fetchTodos,
   removeItem,
   onSetFilter,
-  isLoading
+  isLoading,
+  error
 }) {
   // updated
   useEffect(() => {
@@ -58,6 +59,8 @@ function App({
           removeItem={removeItem}
           saveList={saveList}
           onSetFilter={onSetFilter}
+          error={error}
+          retry={() => fetchTodos(filter)}
         />
       </header>
     </div>
@@ -70,6 +73,7 @@ const mapStateToProps = (state, ownProps) => ({
   localTodos: fromState.getLocalTodos(state),
   remoteTodos: fromState.getRemoteTodos(state),
   isLoading: fromState.isLoading(state),
+  error: fromState.getError(state),
   hasUrlFilter: !!ownProps.match.params.filter
 });
 
