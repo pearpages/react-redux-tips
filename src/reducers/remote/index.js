@@ -1,9 +1,8 @@
 import { combineReducers } from "redux";
 
-import byId from "./byId";
+import byId, * as fromById from "./byId";
 import listByFilter from "./listByFilter";
 import * as fromList from "./createList";
-import * as fromById from "./byId";
 
 export default combineReducers({
   byId,
