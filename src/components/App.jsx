@@ -12,7 +12,6 @@ function App({
   match,
   saveList,
   filter,
-  fetch,
   hasUrlFilter,
   localTodos,
   remoteTodos,
@@ -26,7 +25,6 @@ function App({
   useEffect(() => {
     if (filter) {
       fetchTodos(filter);
-      fetch(filter); // fetchData
     }
   }, [filter]);
 

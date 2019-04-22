@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import promise from "redux-promise";
 import { createLogger } from "redux-logger";
+import thunk from "redux-thunk";
 
 import localTodos, * as fromLocalTodos from "./local";
 import remoteTodos, * as fromRemoteTodos from "./remote";
@@ -12,12 +13,11 @@ const configureStore = () => {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  const middlewares = [];
+  const middlewares = [promise, thunk];
 
   if (process.env.NODE_ENV !== "production") {
     middlewares.push(createLogger());
   }
-  middlewares.push(promise);
 
   const store = createStore(
     combineReducers({ localTodos, remoteTodos, visibilityFilter }),
