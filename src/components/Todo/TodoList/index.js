@@ -16,7 +16,8 @@ export default function TodoList({
   hasUrlFilter,
   todos,
   toggle,
-  removeItem
+  removeItem,
+  isLoading
 }) {
   if (filter !== (match.params.filter || FILTER.ALL)) {
     onSetFilter(match.params.filter || FILTER.ALL);
@@ -27,12 +28,17 @@ export default function TodoList({
       <h4>{title}</h4>
       <FilterButtons saveList={saveList} />
       <AddTodo />
-      <VisibleTodoList
-        hasUrlFilter={hasUrlFilter}
-        todos={todos}
-        toggle={toggle}
-        removeItem={removeItem}
-      />
+      {isLoading ? (
+        <div>loading...</div>
+      ) : (
+        <VisibleTodoList
+          hasUrlFilter={hasUrlFilter}
+          todos={todos}
+          toggle={toggle}
+          removeItem={removeItem}
+        />
+      )}
+
       <div>
         <MyLink
           handleOnClick={() => onSetFilter(FILTER.ALL)}

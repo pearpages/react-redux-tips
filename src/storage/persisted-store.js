@@ -24,9 +24,9 @@ export default {
   remoteTodos: {
     byId: {},
     listByFilter: {
-      [FILTER.ALL]: [],
-      [FILTER.ACTIVE]: [],
-      [FILTER.COMPLETED]: []
+      [FILTER.ALL]: { ids: [], isFetching: false },
+      [FILTER.ACTIVE]: { ids: [], isFetching: false },
+      [FILTER.COMPLETED]: { ids: [], isFetching: false }
     }
   },
   visibilityFilter: FILTER.ALL

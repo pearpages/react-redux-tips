@@ -6,7 +6,7 @@ import "./App.css";
 import TodoList from "./Todo/TodoList";
 import * as FilterActions from "../reducers/visibility-filter";
 import * as Actions from "../actions";
-import { getLocalTodos, getFilter, getRemoteTodos } from "../reducers";
+import * as fromState from "../reducers";
 
 function App({
   match,
@@ -17,12 +17,15 @@ function App({
   localTodos,
   remoteTodos,
   toggle,
+  fetchTodos,
   removeItem,
-  onSetFilter
+  onSetFilter,
+  isLoading
 }) {
   // updated
   useEffect(() => {
     if (filter) {
+      fetchTodos(filter);
       fetch(filter); // fetchData
     }
   }, [filter]);
@@ -41,6 +44,7 @@ function App({
           filter={filter}
           toggle={toggle}
           match={match}
+          isLoading={false}
           removeItem={removeItem}
           saveList={saveList}
           onSetFilter={onSetFilter}
@@ -52,6 +56,7 @@ function App({
           filter={filter}
           toggle={toggle}
           match={match}
+          isLoading={isLoading}
           removeItem={removeItem}
           saveList={saveList}
           onSetFilter={onSetFilter}
@@ -63,9 +68,10 @@ function App({
 
 // how to use own props
 const mapStateToProps = (state, ownProps) => ({
-  filter: getFilter(state),
-  localTodos: getLocalTodos(state),
-  remoteTodos: getRemoteTodos(state),
+  filter: fromState.getFilter(state),
+  localTodos: fromState.getLocalTodos(state),
+  remoteTodos: fromState.getRemoteTodos(state),
+  isLoading: fromState.isLoading(state),
   hasUrlFilter: !!ownProps.match.params.filter
 });
 

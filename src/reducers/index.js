@@ -44,4 +44,7 @@ export const getLocalTodos = state =>
 export const getRemoteTodos = state =>
   fromRemoteTodos.getRemoteTodos(state.remoteTodos, state.visibilityFilter);
 
-export const getFilter = state => state.visibilityFilter;
+export const getFilter = state => state.visibilityFilter; // TODO: fix. we are not supposed to know about the implementation of the inner state
+
+export const isLoading = state =>
+  fromRemoteTodos.isFetching(state.remoteTodos, state.visibilityFilter);
