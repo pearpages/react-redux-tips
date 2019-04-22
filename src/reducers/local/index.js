@@ -34,9 +34,8 @@ export default combineReducers({
   allIds
 });
 
-const getAllTodos = state => state.allIds.map(id => state.byId[id]);
-
 export function getLocalTodos(state, filter) {
+  const getAllTodos = state => state.allIds.map(id => state.byId[id]);
   const allTodos = getAllTodos(state);
   switch (filter) {
     case FILTER.SHOW_ACTIVE:

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 
@@ -19,6 +19,13 @@ function App({
   removeItem,
   onSetFilter
 }) {
+  // updated
+  useEffect(() => {
+    if (filter) {
+      fetch(filter); // fetchData
+    }
+  }, [filter]);
+
   return (
     <div className="App">
       {console.log(
@@ -28,10 +35,9 @@ function App({
       <header className="App-header">
         <TodoList
           title="Local"
-          filter={filter}
-          fetch={fetch}
           hasUrlFilter={hasUrlFilter}
           todos={todos}
+          filter={filter}
           toggle={toggle}
           match={match}
           removeItem={removeItem}
@@ -40,10 +46,9 @@ function App({
         />
         <TodoList
           title="Remote"
-          filter={filter}
-          fetch={fetch}
           hasUrlFilter={hasUrlFilter}
           todos={todos}
+          filter={filter}
           toggle={toggle}
           match={match}
           removeItem={removeItem}

@@ -13,7 +13,6 @@ export default function TodoList({
   onSetFilter,
   title,
   filter,
-  fetch,
   hasUrlFilter,
   todos,
   toggle,
@@ -29,8 +28,6 @@ export default function TodoList({
       <FilterButtons saveList={saveList} />
       <AddTodo />
       <VisibleTodoList
-        filter={filter}
-        fetch={fetch}
         hasUrlFilter={hasUrlFilter}
         todos={todos}
         toggle={toggle}

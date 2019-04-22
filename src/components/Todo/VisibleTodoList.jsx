@@ -1,21 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Todo from "./Todo";
 
-const VisibleTodoList = ({
-  filter,
-  fetch,
-  hasUrlFilter,
-  todos,
-  toggle,
-  removeItem
-}) => {
-  // updated
-  useEffect(() => {
-    if (filter) {
-      fetch(filter); // fetchData
-    }
-  }, [filter]);
-
+const VisibleTodoList = ({ hasUrlFilter, todos, toggle, removeItem }) => {
   return (
     <>
       {hasUrlFilter ? <div>Is using URL filter</div> : null}
