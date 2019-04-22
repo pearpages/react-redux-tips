@@ -33,8 +33,3 @@ export function getLocalTodos(state, filter) {
       return allTodos;
   }
 }
-
-export function getVisibleTodos(state, filter) {
-  const ids = state.idsByFilter[filter];
-  return ids.map(id => state.byId[id]);
-}

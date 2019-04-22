@@ -59,15 +59,3 @@ function getLastId(todos = []) {
     0
   );
 }
-
-export function getVisibleTodos(state, filter) {
-  switch (filter) {
-    case FILTER.ACTIVE:
-      return state.filter(todo => todo.completed === false);
-    case FILTER.COMPLETED:
-      return state.filter(todo => todo.completed === true);
-    case FILTER.ALL:
-    default:
-      return state;
-  }
-}
