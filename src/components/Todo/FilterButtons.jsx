@@ -11,20 +11,20 @@ const FilterButtons = ({ saveList, history }) => {
     <div>
       <div>
         <FilterLink
-          handleClick={() => redirect(FILTER.SHOW_ALL)}
-          filter={FILTER.SHOW_ALL}
+          handleClick={() => redirect(FILTER.ALL)}
+          filter={FILTER.ALL}
         >
           All
         </FilterLink>
         <FilterLink
-          handleClick={() => redirect(FILTER.SHOW_ACTIVE)}
-          filter={FILTER.SHOW_ACTIVE}
+          handleClick={() => redirect(FILTER.ACTIVE)}
+          filter={FILTER.ACTIVE}
         >
           Active
         </FilterLink>
         <FilterLink
-          handleClick={() => redirect(FILTER.SHOW_COMPLETED)}
-          filter={FILTER.SHOW_COMPLETED}
+          handleClick={() => redirect(FILTER.COMPLETED)}
+          filter={FILTER.COMPLETED}
         >
           Completed
         </FilterLink>

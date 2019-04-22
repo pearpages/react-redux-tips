@@ -21,6 +21,13 @@ export default {
       }
     }
   },
-  remoteTodos: {},
-  visibilityFilter: FILTER.SHOW_ALL
+  remoteTodos: {
+    byId: {},
+    listByFilter: {
+      [FILTER.ALL]: [],
+      [FILTER.ACTIVE]: [],
+      [FILTER.COMPLETED]: []
+    }
+  },
+  visibilityFilter: FILTER.ALL
 };

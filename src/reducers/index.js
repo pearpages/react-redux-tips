@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import promise from "redux-promise";
 import { createLogger } from "redux-logger";
 
-import localTodos, * as fromTodos from "./local";
-import remoteTodos from "./remote";
+import localTodos, * as fromLocalTodos from "./local";
+import remoteTodos, * as fromRemoteTodos from "./remote";
 import visibilityFilter from "../reducers/visibility-filter";
 import persistedStore from "../storage/persisted-store";
 import { loadState } from "../storage/local-store-data";
@@ -39,6 +39,9 @@ export default configureStore;
 
 // selectors:
 export const getLocalTodos = state =>
-  fromTodos.getLocalTodos(state.localTodos, state.visibilityFilter);
+  fromLocalTodos.getLocalTodos(state.localTodos, state.visibilityFilter);
+
+export const getRemoteTodos = state =>
+  fromRemoteTodos.getRemoteTodos(state.remoteTodos, state.visibilityFilter);
 
 export const getFilter = state => state.visibilityFilter;

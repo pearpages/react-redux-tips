@@ -6,7 +6,7 @@ import FILTER from "../../reducers/filter.models";
 export default ({ filter, children, handleOnClick }) => (
   <NavLink
     onClick={() => handleOnClick()}
-    to={filter !== FILTER.SHOW_ALL ? filter : ""}
+    to={filter !== FILTER.ALL ? filter : ""}
   >
     {children}
   </NavLink>

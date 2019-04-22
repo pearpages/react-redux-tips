@@ -6,7 +6,7 @@ import "./App.css";
 import TodoList from "./Todo/TodoList";
 import * as FilterActions from "../reducers/visibility-filter";
 import * as Actions from "../actions";
-import { getLocalTodos, getFilter } from "../reducers";
+import { getLocalTodos, getFilter, getRemoteTodos } from "../reducers";
 
 function App({
   match,
@@ -14,7 +14,8 @@ function App({
   filter,
   fetch,
   hasUrlFilter,
-  todos,
+  localTodos,
+  remoteTodos,
   toggle,
   removeItem,
   onSetFilter
@@ -36,7 +37,7 @@ function App({
         <TodoList
           title="Local"
           hasUrlFilter={hasUrlFilter}
-          todos={todos}
+          todos={localTodos}
           filter={filter}
           toggle={toggle}
           match={match}
@@ -47,7 +48,7 @@ function App({
         <TodoList
           title="Remote"
           hasUrlFilter={hasUrlFilter}
-          todos={todos}
+          todos={remoteTodos}
           filter={filter}
           toggle={toggle}
           match={match}
@@ -63,7 +64,8 @@ function App({
 // how to use own props
 const mapStateToProps = (state, ownProps) => ({
   filter: getFilter(state),
-  todos: getLocalTodos(state),
+  localTodos: getLocalTodos(state),
+  remoteTodos: getRemoteTodos(state),
   hasUrlFilter: !!ownProps.match.params.filter
 });
 

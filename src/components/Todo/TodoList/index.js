@@ -18,8 +18,8 @@ export default function TodoList({
   toggle,
   removeItem
 }) {
-  if (filter !== (match.params.filter || FILTER.SHOW_ALL)) {
-    onSetFilter(match.params.filter || FILTER.SHOW_ALL);
+  if (filter !== (match.params.filter || FILTER.ALL)) {
+    onSetFilter(match.params.filter || FILTER.ALL);
   }
 
   return (
@@ -35,22 +35,22 @@ export default function TodoList({
       />
       <div>
         <MyLink
-          handleOnClick={() => onSetFilter(FILTER.SHOW_ALL)}
-          filter={FILTER.SHOW_ALL}
+          handleOnClick={() => onSetFilter(FILTER.ALL)}
+          filter={FILTER.ALL}
         >
           ALL
         </MyLink>{" "}
         |{" "}
         <MyLink
-          handleOnClick={() => onSetFilter(FILTER.SHOW_ACTIVE)}
-          filter={FILTER.SHOW_ACTIVE}
+          handleOnClick={() => onSetFilter(FILTER.ACTIVE)}
+          filter={FILTER.ACTIVE}
         >
           ACTIVE
         </MyLink>{" "}
         |{" "}
         <MyLink
-          handleOnClick={() => onSetFilter(FILTER.SHOW_COMPLETED)}
-          filter={FILTER.SHOW_COMPLETED}
+          handleOnClick={() => onSetFilter(FILTER.COMPLETED)}
+          filter={FILTER.COMPLETED}
         >
           COMPLETED
         </MyLink>

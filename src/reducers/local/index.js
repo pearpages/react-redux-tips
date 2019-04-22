@@ -24,11 +24,11 @@ export function getLocalTodos(state, filter) {
   const getAllTodos = state => state.allIds.map(id => state.byId[id]);
   const allTodos = getAllTodos(state);
   switch (filter) {
-    case FILTER.SHOW_ACTIVE:
+    case FILTER.ACTIVE:
       return allTodos.filter(todo => todo.completed === false);
-    case FILTER.SHOW_COMPLETED:
+    case FILTER.COMPLETED:
       return allTodos.filter(todo => todo.completed === true);
-    case FILTER.SHOW_ALL:
+    case FILTER.ALL:
     default:
       return allTodos;
   }

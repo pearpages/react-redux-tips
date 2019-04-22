@@ -34,7 +34,7 @@ const todos = (state = [], action) => {
   }
 };
 
-const visibilityFilter = (state = FILTER.SHOW_ALL, action) => {
+const visibilityFilter = (state = FILTER.ALL, action) => {
   switch (action.type) {
     case "SET_VISIBILITY_FILTER":
       return action.filter;
@@ -54,7 +54,7 @@ const store = createStore(todoApp);
 it("Initial state:", () => {
   expect(store.getState()).toEqual({
     todos: [],
-    visibilityFilter: FILTER.SHOW_ALL
+    visibilityFilter: FILTER.ALL
   });
 });
 
@@ -78,20 +78,20 @@ it("should add a todo", () => {
       { completed: true, id: 0, text: "Learn Redux" },
       { completed: false, id: 1, text: "Go shopping" }
     ],
-    visibilityFilter: FILTER.SHOW_ALL
+    visibilityFilter: FILTER.ALL
   });
 });
 
 it("should set the visibility filter", () => {
   store.dispatch({
     type: "SET_VISIBILITY_FILTER",
-    filter: FILTER.SHOW_COMPLETED
+    filter: FILTER.COMPLETED
   });
   expect(store.getState()).toEqual({
     todos: [
       { completed: true, id: 0, text: "Learn Redux" },
       { completed: false, id: 1, text: "Go shopping" }
     ],
-    visibilityFilter: FILTER.SHOW_COMPLETED
+    visibilityFilter: FILTER.COMPLETED
   });
 });

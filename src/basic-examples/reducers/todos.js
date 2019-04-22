@@ -62,11 +62,11 @@ function getLastId(todos = []) {
 
 export function getVisibleTodos(state, filter) {
   switch (filter) {
-    case FILTER.SHOW_ACTIVE:
+    case FILTER.ACTIVE:
       return state.filter(todo => todo.completed === false);
-    case FILTER.SHOW_COMPLETED:
+    case FILTER.COMPLETED:
       return state.filter(todo => todo.completed === true);
-    case FILTER.SHOW_ALL:
+    case FILTER.ALL:
     default:
       return state;
   }
