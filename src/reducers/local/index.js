@@ -5,6 +5,7 @@ import ACTION_TYPES from "../../actions/types";
 import FILTER from "../filter.models";
 
 const allIds = (state = [], action) => {
+  console.log(state, action);
   switch (action.type) {
     case ACTION_TYPES.ADD_TODO:
       return [...state, action.id];
