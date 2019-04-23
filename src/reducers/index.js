@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import promise from "redux-promise";
 import thunk from "redux-thunk";
 import { createLogger } from "redux-logger";
+import "@babel/polyfill";
 
 import localTodos, * as fromLocalTodos from "./local";
 import remoteTodos, * as fromRemoteTodos from "./remote";
